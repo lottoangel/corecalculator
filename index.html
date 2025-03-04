@@ -29,11 +29,11 @@
         button:hover {
             background-color: #45a049;
         }
-        #delete-btn, #calc-btn {
+        #control-buttons button {
             background-color: #f44336;
             margin: 5px;
         }
-        #delete-btn:hover, #calc-btn:hover {
+        #control-buttons button:hover {
             background-color: #da190b;
         }
         #selected-cores {
@@ -57,15 +57,16 @@
 <body>
     <h1>Base Core Combo Calculator</h1>
     <div class="core-buttons" id="core-buttons"></div>
-    <div>
+    <div id="control-buttons">
         <button id="delete-btn" onclick="deleteLast()">Delete Last</button>
+        <button id="clear-btn" onclick="clearAll()">Clear All</button>
         <button id="calc-btn" onclick="calculateCombos()">Calculate Combos</button>
     </div>
     <div id="selected-cores">Selected Base Cores: None</div>
     <div id="output"></div>
 
     <script>
-        // Combo dictionary (same as your Python version)
+        // Combo dictionary
         const combos = {
             "Silver,Time": "Lotto",
             "Silver,Dragon": "Intangibility",
@@ -220,6 +221,12 @@
                 selectedCores.pop();
                 updateSelectedDisplay();
             }
+        }
+
+        // Clear all selected Base Cores
+        function clearAll() {
+            selectedCores = [];
+            updateSelectedDisplay();
         }
 
         // Update the selected cores display
